@@ -1,0 +1,26 @@
+<div fullpage id="fullpage" [options]="config" (ref)="getRef($event)">
+  <div class="section" id="component-landing">
+    <div class="trailer-container">
+      <div class="brand" *ngIf="isEnded"><img src="assets/svgs/brand-white.svg"></div>
+      <vg-player ngClass="{{!isEnded ? '' : 'ended'}}">
+        <video id="trailer" [vgMedia]="media" #media preload="auto" controls
+               (ended)="transformLandingPage()">
+          <source src="assets/videos/cutted-teaser.mp4" type="video/mp4">
+        </video>
+      </vg-player>
+      <div class="video-bg-mask"></div>
+      <video class="video-bg" id="trailer-bg" src="assets/videos/cutted-teaser-bg.mp4"
+             type="video/mp4" autoplay
+             loop></video>
+    </div>
+
+  </div>
+  <div class="section" id="component-info">Info</div>
+  <div class="section" id="component-places">
+    <div class="slide" id="place-first">First place</div>
+    <div class="slide" id="place-second">Second place</div>
+    <div class="slide" id="place-third">Third place</div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
