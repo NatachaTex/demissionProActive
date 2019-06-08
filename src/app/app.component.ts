@@ -83,7 +83,7 @@ export class AppComponent {
     this.gestureHandler.get('pan').set({ threshold: 100 });
     this.gestureHandler.get('pan').set({ direction: Hammer.DIRECTION_ALL });
     this.gestureHandler.on('panleft panright panup pandown', (event) => {
-      if (this.isScrolling === false) {
+      if (this.isScrolling === false && !event.target.closest('.prevent-swipe')) {
         switch (event.direction) {
           case Hammer.DIRECTION_LEFT:
             this.fullpageApi.moveSlideRight();
@@ -104,6 +104,10 @@ export class AppComponent {
 
   nextSection() {
     this.fullpageApi.moveSectionDown();
+  }
+
+  prevSection() {
+    this.fullpageApi.moveSectionUp();
   }
 
   transformLandingPage() {
@@ -140,14 +144,16 @@ export class AppComponent {
 
   @HostListener('mousewheel', ['$event']) // for window scroll events
   onScroll(event) {
-    if(event.deltaY >= 70 && this.isScrolling === false) {
-      this.fullpageApi.moveSectionDown();
-    } else if(event.deltaY <= -70  && this.isScrolling === false) {
-      this.fullpageApi.moveSectionUp();
-    } else if(event.deltaX >= 70 && this.isScrolling === false) {
-      this.fullpageApi.moveSlideRight();
-    }  else if(event.deltaX <= -70 && this.isScrolling === false) {
-      this.fullpageApi.moveSlideLeft();
+    if( !event.target.closest('.prevent-swipe') ) {
+      if(event.deltaY >= 70 && this.isScrolling === false) {
+        this.fullpageApi.moveSectionDown();
+      } else if(event.deltaY <= -70  && this.isScrolling === false) {
+        this.fullpageApi.moveSectionUp();
+      } else if(event.deltaX >= 70 && this.isScrolling === false) {
+        this.fullpageApi.moveSlideRight();
+      }  else if(event.deltaX <= -70 && this.isScrolling === false) {
+        this.fullpageApi.moveSlideLeft();
+      }
     }
   }
 }

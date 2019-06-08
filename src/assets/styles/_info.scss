@@ -1,6 +1,84 @@
-#component-info {
+#component-explanations, #component-info {
   background-image: url("./assets/images/video1.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+
+  .component-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 125px 110px;
+    max-width: 1700px;
+    margin: 0 auto;
+
+    &-title {
+      flex: 1 1 auto;
+    }
+
+    &-content {
+      max-width: 100%;
+      flex: 1 1 auto;
+      background: #fafafa;
+      border-radius: 5px;
+      width: 100%;
+      padding: 0 30px;
+
+      @media screen and (max-width: 1200px) {
+        max-height: 400px;
+        overflow-y: auto;
+      }
+
+      &-title {
+        flex: 1 0 100%;
+      }
+
+      .text-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: justify;
+
+        @media screen and (max-width: 1200px) {
+          flex-direction: column;
+          padding-bottom: 30px;
+        }
+
+        &-left {
+          padding-left: 30px;
+          margin-right: 30px;
+          flex: 1 1 auto;
+          @media screen and (max-width: 1200px) {
+            padding: 0 30px;
+            margin: 0 0 30px 0;
+          }
+        }
+
+        &-right {
+          margin-left: 30px;
+          padding-right: 30px;
+          flex: 1 1 auto;
+          @media screen and (max-width: 1200px) {
+            padding: 0 30px;
+            margin: 30px 0 0 0;
+          }
+        }
+      }
+    }
+
+    .text-quoted {
+      color: #fafafa;
+      text-align: center;
+      margin: 15px 0;
+      flex: 0 0 20%;
+
+      @media screen and (max-width: 1200px) {
+        font-size: 0.8rem;
+      }
+    }
+  }
+
 }

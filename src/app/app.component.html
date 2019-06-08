@@ -1,7 +1,8 @@
 <div fullpage id="fullpage" [options]="config" (ref)="getRef($event)" (pan)="handlePan()">
-  <div class="section" id="component-landing">
+  <div class="section" data-tooltip="Trailer" id="component-landing">
     <div class="trailer-container">
       <div class="brand" *ngIf="isEnded"><img src="./assets/svgs/brand-white.svg"></div>
+      <div class="brand-main" ngClass="{{!isEnded ? '' : 'ended'}}"><img src="./assets/svgs/brand-white.svg"></div>
       <div class="video-container" ngClass="{{!isEnded ? '' : 'ended'}}"
       >
         <vg-player>
@@ -22,6 +23,7 @@
           <video id="trailer"
                  [vgMedia]="media"
                  #media
+                 poster="./assets/images/eye.jpg"
                  preload="auto"
                  (tap)="handleVideoClick()"
                  (ended)="transformLandingPage()">
@@ -30,23 +32,101 @@
         </vg-player>
       </div>
       <div class="nav-next-down" *ngIf="isEnded" (click)="nextSection()">
-        <img src="./assets/svgs/next-down-arrow.svg"/>
+        <span>Avant-propos</span>
+        <img src="./assets/svgs/arrow-section-next.svg"/>
       </div>
       <div class="video-bg-container">
         <div class="video-bg-mask"></div>
         <video class="video-bg" id="trailer-bg" src="./assets/videos/cutted-teaser-bg.mp4"
                type="video/mp4" autoplay
+               muted
                loop></video>
       </div>
     </div>
+  </div >
+  <div class="section" data-tooltip="Avant-propos" id="component-explanations">
+    <div class="brand-main">
+      <img src="./assets/svgs/brand-white.svg">
+    </div>
+    <div class="nav-prev-up" (click)="prevSection()">
+      <img src="./assets/svgs/arrow-section-prev.svg"/>
+      <span>Trailer</span>
+    </div>
+    <div class="component-container">
+      <div class="component-container-content prevent-swipe">
+        <div class="component-container-title">
+          <h1>Avant-Propos</h1>
+        </div>
+        <div class="text-section">
+          <div class="text-section-left">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos doloribus laboriosam omnis porro quis similique ullam voluptas. Modi sit, ut! Assumenda aut expedita libero minima nesciunt nobis quia quis sequi.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias asperiores autem ipsa vitae. Provident quaerat repellat voluptatum. Deserunt est ipsa maxime natus quidem ratione sapiente voluptate. Itaque odio velit voluptate!
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati odio porro praesentium repellat? Esse magni necessitatibus quidem totam. Cum ea, eius facilis in minima molestiae nostrum numquam porro qui vero.
+          </div>
+          <div class="text-section-right">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos doloribus laboriosam omnis porro quis similique ullam voluptas. Modi sit, ut! Assumenda aut expedita libero minima nesciunt nobis quia quis sequi.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias asperiores autem ipsa vitae. Provident quaerat repellat voluptatum. Deserunt est ipsa maxime natus quidem ratione sapiente voluptate. Itaque odio velit voluptate!
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati odio porro praesentium repellat? Esse magni necessitatibus quidem totam. Cum ea, eius facilis in minima molestiae nostrum numquam porro qui vero.
+          </div>
+        </div>
+      </div>
+      <div class="text-quoted">
+        <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, assumenda at deserunt enim, exercitationem facere nulla porro, provident qui quo soluta unde vero! In iste, quisquam sequi sit suscipit velit.</h2>
+      </div>
+    </div>
+    <div class="nav-next-down" (click)="nextSection()">
+      <span>Informations</span>
 
+      <img src="./assets/svgs/arrow-section-next.svg"/>
+    </div>
   </div>
-  <div class="section" id="component-info">
+  <div class="section" data-tooltip="Informations" id="component-info">
+    <div class="brand-main">
+      <img src="./assets/svgs/brand-white.svg">
+    </div>
+    <div class="nav-prev-up" (click)="prevSection()">
+      <img src="./assets/svgs/arrow-section-prev.svg"/>
+      <span>Avant-propos</span>
+    </div>
+    <div class="component-info-container">
+      <div class="component-info-container-content">
+        <div class="text-section-left">
+
+        </div>
+        <div class="text-section-right">
+
+        </div>
+      </div>
+
+    </div>
+    <div class="text-quoted"></div>
+    <div class="nav-next-down" (click)="nextSection()">
+      <span>Lieux</span>
+
+      <img src="./assets/svgs/arrow-section-next.svg"/>
+    </div>
   </div>
-  <div class="section" id="component-places">
-    <div class="slide" id="place-first">First place</div>
-    <div class="slide" id="place-second">Second place</div>
-    <div class="slide" id="place-third">Third place</div>
+  <div class="section" id="component-places" data-tooltip="Lieux">
+    <div class="brand-main">
+      <img src="./assets/svgs/brand-white.svg">
+    </div>
+    <div class="nav-prev-up" (click)="prevSection()">
+      <img src="./assets/svgs/arrow-section-prev.svg"/>
+      <span>Informations</span>
+    </div>
+    <div class="component-info-container">
+      <div class="component-info-container-content">
+
+      </div>
+    </div>
+    <div class="slide" id="place-first">
+
+    </div>
+    <div class="slide" id="place-second">
+    </div>
+    <div class="slide" id="place-third">
+
+    </div>
   </div>
 </div>
 

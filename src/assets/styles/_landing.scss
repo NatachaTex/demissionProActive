@@ -7,30 +7,6 @@
     align-items: center;
     flex-direction: column;
 
-    .brand {
-      z-index: 3;
-      max-width: 50%;
-      width: 100%;
-    }
-
-    .nav-next-down {
-      z-index: 3;
-      position: absolute;
-      bottom: 50px;
-      left: calc(50% - 50px);
-      transform: rotate(90deg);
-      cursor: pointer;
-      transition: all 0.3s ease;
-
-      &:hover {
-        transform: rotate(90deg) translateX(15px)
-      }
-
-      img {
-        width: 50px;
-      }
-    }
-
     .video-container {
       z-index: 3;
       transition: all 0.7s ease-in-out;
@@ -57,7 +33,7 @@
 
       .video-bg, .video-bg-mask {
         position: absolute;
-        height: 100%;
+        width: 100%;
         top: 0;
         left: 0;
         z-index: 0;
@@ -70,15 +46,5 @@
         backdrop-filter: blur(5px);
       }
     }
-
-
-
-
-
-
-
-    .video-button-play {}
-
-    .video-button-replay {}
   }
 }
