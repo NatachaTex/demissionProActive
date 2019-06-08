@@ -10,3 +10,81 @@
   left: auto !important;
   z-index: 3;
 }
+
+
+.nav-next-down {
+  z-index: 3;
+  position: absolute;
+  bottom: 20px;
+  left: calc(50% - 100px);
+  width: 200px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+
+  &:hover {
+    transform: translateY(15px)
+  }
+
+  img {
+    width: 50px;
+  }
+}
+
+.nav-prev-up {
+  z-index: 3;
+  position: absolute;
+  top: 20px;
+  left: calc(50% - 100px);
+  width: 200px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+
+  &:hover {
+    transform: translateY(-15px)
+  }
+
+  img {
+    width: 50px;
+  }
+}
+
+
+.section, .slide {
+  position: relative;
+
+  &:hover {
+    .brand-main {
+      opacity: 1;
+    }
+  }
+
+  .brand, .brand-main {
+    z-index: 4;
+    max-width: 50%;
+    width: 100%;
+  }
+
+  .brand-main {
+    position: absolute;
+    width: 25%;
+    opacity: 0;
+    transition: 0.2s ease-in-out;
+    top: 20px;
+    left: 20px;
+
+    &.ended {
+      opacity: 0;
+      z-index: -1;
+    }
+  }
+}
