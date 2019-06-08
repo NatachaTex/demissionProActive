@@ -1,11 +1,14 @@
-vg-controls {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  * {
-    &:focus {
-      outline:0 !important;
+vg-player {
+  width: 100%;
+
+  vg-controls {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    * {
+      &:focus {
+        outline:0 !important;
+      }
     }
   }
 }
-
