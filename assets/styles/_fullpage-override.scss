@@ -26,8 +26,16 @@
   flex-direction: column;
   color: white;
 
+  span {
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+
   &:hover {
-    transform: translateY(15px)
+    transform: translateY(15px);
+    span {
+      opacity: 1;
+    }
   }
 
   img {
@@ -49,8 +57,16 @@
   flex-direction: column;
   color: white;
 
+  span {
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+
   &:hover {
-    transform: translateY(-15px)
+    transform: translateY(-15px);
+    span {
+      opacity: 1;
+    }
   }
 
   img {
@@ -73,13 +89,17 @@
     max-width: 30%;
     width: 100%;
     min-width: 200px;
-    transition: 0.1s ease-in-out;
     top: 20px;
     left: 20px;
 
-    &.ended {
-      opacity: 0;
-      z-index: -1;
+    &.video {
+      opacity: 1;
+      transition: all 0.3s ease-in-out;
+      left: calc(50% - 15%);
+      &-running {
+        opacity: 0;
+        z-index: -1;
+      }
     }
   }
 }
