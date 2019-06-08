@@ -2,16 +2,42 @@
   <div class="section" id="component-landing">
     <div class="trailer-container">
       <div class="brand" *ngIf="isEnded"><img src="./assets/svgs/brand-white.svg"></div>
-      <vg-player ngClass="{{!isEnded ? '' : 'ended'}}">
-        <video id="trailer" [vgMedia]="media" #media preload="auto" controls
-               (ended)="transformLandingPage()">
-          <source src="./assets/videos/cutted-teaser.mp4" type="video/mp4">
-        </video>
-      </vg-player>
-      <div class="video-bg-mask"></div>
-      <video class="video-bg" id="trailer-bg" src="./assets/videos/cutted-teaser-bg.mp4"
-             type="video/mp4" autoplay
-             loop></video>
+      <div class="video-container" ngClass="{{!isEnded ? '' : 'ended'}}"
+      >
+        <vg-player>
+          <vg-controls vgFor="trailer">
+            <vg-play-pause></vg-play-pause>
+
+            <vg-scrub-bar [vgSlider]="true">
+              <vg-scrub-bar-current-time [vgSlider]="true"></vg-scrub-bar-current-time>
+              <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+            </vg-scrub-bar>
+
+            <vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>
+
+            <vg-volume></vg-volume>
+
+            <vg-fullscreen></vg-fullscreen>
+          </vg-controls>
+          <video id="trailer"
+                 [vgMedia]="media"
+                 #media
+                 preload="auto"
+                 (click)="handleVideoClick()"
+                 (ended)="transformLandingPage()">
+            <source src="./assets/videos/cutted-teaser.mp4" type="video/mp4">
+          </video>
+        </vg-player>
+      </div>
+      <div class="nav-next-down" *ngIf="isEnded" (click)="nextSection()">
+        <img src="./assets/svgs/next-down-arrow.svg"/>
+      </div>
+      <div class="video-bg-container">
+        <div class="video-bg-mask"></div>
+        <video class="video-bg" id="trailer-bg" src="./assets/videos/cutted-teaser-bg.mp4"
+               type="video/mp4" autoplay
+               loop></video>
+      </div>
     </div>
 
   </div>
