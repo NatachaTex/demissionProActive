@@ -62,12 +62,6 @@
 .section, .slide {
   position: relative;
 
-  &:hover {
-    .brand-main {
-      opacity: 1;
-    }
-  }
-
   .brand, .brand-main {
     z-index: 4;
     max-width: 50%;
@@ -76,9 +70,10 @@
 
   .brand-main {
     position: absolute;
-    width: 25%;
-    opacity: 0;
-    transition: 0.2s ease-in-out;
+    max-width: 30%;
+    width: 100%;
+    min-width: 200px;
+    transition: 0.1s ease-in-out;
     top: 20px;
     left: 20px;
 

@@ -1,29 +1,37 @@
-#component-info {
+#component-explanations, #component-info {
   background-image: url("./assets/images/video1.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 
-  .component-info-container {
+  .component-container {
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
     height: 100%;
+    padding: 125px 110px;
+    max-width: 1700px;
+    margin: 0 auto;
 
     &-title {
       flex: 1 1 auto;
     }
 
     &-content {
-      max-width: 1700px;
-      max-height: 70vh;
-      width: 100%;
-      flex: 1 1 80%;
+      max-width: 100%;
+      flex: 1 1 auto;
       background: #fafafa;
       border-radius: 5px;
+      width: 100%;
+    }
+
+    .text-quoted {
+      color: #fafafa;
+      text-align: center;
+      margin: 15px 0;
+      flex: 0 0 20%;
     }
   }
 
