@@ -1,4 +1,5 @@
 import {Component, HostListener} from '@angular/core';
+import Hammer from 'hammerjs'
 
 
 export enum KEY_CODE {
@@ -16,6 +17,7 @@ export enum KEY_CODE {
 export class AppComponent {
   config: any;
   fullpageApi: any;
+  gestureHandler: any;
   public isEnded = false;
   public isScrolling = false;
 
@@ -28,6 +30,7 @@ export class AppComponent {
       slidesNavigation: true,
       touchSensitivity: '1',
       keyboardScrolling: false,
+      controlArrows: false,
       allowScrolling: false,
       afterResize: () => {
         console.log('After resize');
@@ -35,13 +38,15 @@ export class AppComponent {
       afterLoad: (origin, destination, direction) => {
         const videoElem: any = document.getElementById('trailer');
         const videoBgElem: any = document.getElementById('trailer-bg');
-        if (origin && destination.anchor === 'landing') {
+        if (origin) {
           switch (destination.anchor) {
             case 'landing':
+              videoBgElem.play();
               if (videoElem.paused && videoElem.played.length !== 0 && !this.isEnded) {
                 videoElem.play();
               }
-              videoBgElem.play();
+              break;
+            case 'info':
               break;
           }
         }
@@ -72,6 +77,30 @@ export class AppComponent {
       videoElem.pause();
     }
   }
+
+  handlePan = () => {
+    this.gestureHandler = new Hammer(document.getElementById('fullpage'));
+    this.gestureHandler.get('pan').set({ threshold: 100 });
+    this.gestureHandler.get('pan').set({ direction: Hammer.DIRECTION_ALL });
+    this.gestureHandler.on('panleft panright panup pandown', (event) => {
+      if (this.isScrolling === false) {
+        switch (event.direction) {
+          case Hammer.DIRECTION_LEFT:
+            this.fullpageApi.moveSlideRight();
+            break;
+          case Hammer.DIRECTION_RIGHT:
+            this.fullpageApi.moveSlideLeft();
+            break;
+          case Hammer.DIRECTION_UP:
+            this.fullpageApi.moveSectionDown();
+            break;
+          case Hammer.DIRECTION_DOWN:
+            this.fullpageApi.moveSectionUp();
+            break;
+        }
+      }
+    });
+  };
 
   nextSection() {
     this.fullpageApi.moveSectionDown();

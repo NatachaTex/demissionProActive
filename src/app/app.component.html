@@ -1,4 +1,4 @@
-<div fullpage id="fullpage" [options]="config" (ref)="getRef($event)">
+<div fullpage id="fullpage" [options]="config" (ref)="getRef($event)" (pan)="handlePan()">
   <div class="section" id="component-landing">
     <div class="trailer-container">
       <div class="brand" *ngIf="isEnded"><img src="./assets/svgs/brand-white.svg"></div>
@@ -23,7 +23,7 @@
                  [vgMedia]="media"
                  #media
                  preload="auto"
-                 (click)="handleVideoClick()"
+                 (tap)="handleVideoClick()"
                  (ended)="transformLandingPage()">
             <source src="./assets/videos/cutted-teaser.mp4" type="video/mp4">
           </video>
@@ -41,7 +41,8 @@
     </div>
 
   </div>
-  <div class="section" id="component-info">Info</div>
+  <div class="section" id="component-info">
+  </div>
   <div class="section" id="component-places">
     <div class="slide" id="place-first">First place</div>
     <div class="slide" id="place-second">Second place</div>
