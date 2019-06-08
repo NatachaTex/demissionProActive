@@ -1,0 +1,15 @@
+vg-player {
+  z-index: 3;
+  transition: all 0.3s ease;
+  transform-origin: center center;
+  &.ended {
+    min-width: 400px;
+    min-height: 400px;
+    width: 75% !important;
+    height: 100%;
+    margin: 10px;
+    max-height: 75% !important;
+  }
+}
+
+
