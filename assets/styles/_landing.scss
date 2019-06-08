@@ -1,6 +1,7 @@
 #component-landing {
   .trailer-container {
-    height: 100vh;
+    max-height: 100vh;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,22 +9,71 @@
 
     .brand {
       z-index: 3;
+      max-width: 50%;
+      width: 100%;
     }
 
-    .video-bg, .video-bg-mask {
+    .nav-next-down {
+      z-index: 3;
+      position: absolute;
+      bottom: 50px;
+      left: calc(50% - 50px);
+      transform: rotate(90deg);
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: rotate(90deg) translateX(15px)
+      }
+
+      img {
+        width: 50px;
+      }
+    }
+
+    .video-container {
+      z-index: 3;
+      transition: all 0.7s ease-in-out;
+      transform-origin: center center;
+      height: 100%;
+
+      &.ended {
+        min-width: 400px;
+        min-height: 400px;
+        width: 60% !important;
+        height: 100%;
+        margin: 10px;
+        max-height: 60% !important;
+      }
+    }
+
+    .video-bg-container {
+      height: 100%;
       position: absolute;
       width: 100%;
       top: 0;
       left: 0;
       z-index: 0;
+
+      .video-bg, .video-bg-mask {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 0;
+      }
+
+      .video-bg-mask {
+        z-index: 2;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(5px);
+      }
     }
 
-    .video-bg-mask {
-      z-index: 2;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(5px);
-    }
+
+
+
 
 
 
