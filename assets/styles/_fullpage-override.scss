@@ -1,6 +1,21 @@
 #fp-nav {
   top: 40px;
   z-index: 3;
+  span {
+    background: white !important;
+  }
+}
+
+.fp-slidesNav {
+  text-align: right;
+  width: 100%;
+  right: 10px;
+  left: auto !important;
+  z-index: 3;
+
+  span {
+    background: white !important;
+  }
 }
 
 .nav {
@@ -45,7 +60,7 @@
     }
     &-right {
       top: calc(50% - 50px);
-      right: -100px;
+      right: -120px;
       width: 100px;
       height: 70px;
       flex-direction: row;
@@ -69,7 +84,7 @@
 
     &-left {
       top: calc(50% - 50px);
-      left: -100px;
+      left: -120px;
       width: 100px;
       height: 70px;
       flex-direction: row;
@@ -79,14 +94,6 @@
       }
     }
   }
-}
-
-.fp-slidesNav {
-  text-align: right;
-  width: 100%;
-  right: 10px;
-  left: auto !important;
-  z-index: 3;
 }
 
 .section, .slide {
@@ -129,6 +136,34 @@
   z-index: 2;
   transition: all 0.5s ease;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), transparent);
+  cursor: pointer;
+
+  &.hide {
+    opacity: 0;
+  }
+
+  &.show {
+    opacity: 1;
+  }
+}
+
+
+.footer-custom {
+  width: 100%;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 20px;
+  z-index: 2;
+  transition: all 0.5s ease;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.65), transparent);
+  cursor: pointer;
+  font-family: 'Barlow', sans-serif;
+  p {
+    color: #fafafa;
+    margin: 0;
+  }
 
   &.hide {
     opacity: 0;
