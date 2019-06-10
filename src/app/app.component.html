@@ -1,8 +1,13 @@
+<div class="navbar" ngClass="{{isLandingPage ? 'hide' : 'show'}}">
+  <img src="./assets/svgs/brand-white.svg" />
+</div>
+
 <div fullpage id="fullpage" [options]="config" (ref)="getRef($event)" (pan)="handlePan()">
-  <div class="section" data-tooltip="Trailer" id="component-landing">
+  <div class="section" id="component-landing">
     <div class="trailer-container">
       <div class="brand" *ngIf="isEnded"><img src="./assets/svgs/brand-white.svg"></div>
-      <div class="brand-main" ngClass="{{!isEnded ? '' : 'ended'}}"><img src="./assets/svgs/brand-white.svg"></div>
+      <div class="brand-main video" ngClass="{{!isRunning ? '' : 'video-running'}}"><img
+        src="./assets/svgs/brand-white.svg"></div>
       <div class="video-container" ngClass="{{!isEnded ? '' : 'ended'}}"
       >
         <vg-player>
@@ -44,88 +49,136 @@
       </div>
     </div>
   </div >
-  <div class="section" data-tooltip="Avant-propos" id="component-explanations">
-    <div class="brand-main">
-      <img src="./assets/svgs/brand-white.svg">
-    </div>
-    <div class="nav-prev-up" (click)="prevSection()">
-      <img src="./assets/svgs/arrow-section-prev.svg"/>
-      <span>Trailer</span>
-    </div>
+  <div class="section" id="component-explanations">
     <div class="component-container">
-      <div class="component-container-content prevent-swipe">
+      <div class="component-container-content">
+        <div class="nav-prev-up" (click)="prevSection()">
+          <img src="./assets/svgs/arrow-section-prev.svg"/>
+          <span>Teaser</span>
+        </div>
         <div class="component-container-title">
           <h1>Avant-Propos</h1>
         </div>
         <div class="text-section">
           <div class="text-section-left">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos doloribus laboriosam omnis porro quis similique ullam voluptas. Modi sit, ut! Assumenda aut expedita libero minima nesciunt nobis quia quis sequi.
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias asperiores autem ipsa vitae. Provident quaerat repellat voluptatum. Deserunt est ipsa maxime natus quidem ratione sapiente voluptate. Itaque odio velit voluptate!
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati odio porro praesentium repellat? Esse magni necessitatibus quidem totam. Cum ea, eius facilis in minima molestiae nostrum numquam porro qui vero.
+            <p>
+              « Il est aisé de se fondre dans le modèle socio-économique proposé, depuis plusieurs générations. Nous avons été formatés pour cela : croître et prospérer de plus en plus économiquement. Produire pour consommer davantage est devenu la règle. La compétition a remplacé l’entraide et l’individualisme s’oppose à l’échange. Au prix d’une vie passée à courir après les biens matériels, on en oublie presque d’exister.
+              <br/>
+              Surconsommation, suralimentation, bun-out, manipulations génétiques... De puissants lobbies resserrent l’étau pour définir un ordre mondial de la consommation. Sans compter l’accumulation de nos déchets qui nous oblige à inventer de nouveaux termes tels que : « mer de plastique » ou « sixième continent ». Il paraît évident que ces éléments font naître stress, peurs et autres angoisses.
+            </p>
+            <br/>
           </div>
           <div class="text-section-right">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos doloribus laboriosam omnis porro quis similique ullam voluptas. Modi sit, ut! Assumenda aut expedita libero minima nesciunt nobis quia quis sequi.
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias asperiores autem ipsa vitae. Provident quaerat repellat voluptatum. Deserunt est ipsa maxime natus quidem ratione sapiente voluptate. Itaque odio velit voluptate!
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati odio porro praesentium repellat? Esse magni necessitatibus quidem totam. Cum ea, eius facilis in minima molestiae nostrum numquam porro qui vero.
+            <p>
+              Un slogan résonne en moi : il est urgent de ralentir. Pour beaucoup d’entre nous l’idée d’emprunter un autre chemin rime avec utopie tellement le changement paraît énorme. Cependant à travers le monde, un nombre de plus en plus croissant d’initiatives liées à un changement pérenne voie le jour. Village participatif, éco-ferme ou permaculture comme alternative à l’industrialisation de notre alimentation. Mais surtout, c’est le lien social qui pointe à nouveau le bout de son nez. Recréer de l’échange et de la proximité. Les acteurs institutionnels tendent de plus en plus l’oreille à cette belle idée de transition. C’est grâce à ce type d’initiatives que l’utopie laisse de plus en plus de place au concret et par ricochet, génère l’espoir d’une vie plus harmonieuse à bien des individus et familles. » - Frédéric Vitadier
+            </p>
           </div>
         </div>
       </div>
       <div class="text-quoted">
-        <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, assumenda at deserunt enim, exercitationem facere nulla porro, provident qui quo soluta unde vero! In iste, quisquam sequi sit suscipit velit.</h2>
+        <p>
+          Durant près de deux ans, Frédéric Vitadier a suivi trois de ces initiatives, pour réaliser son film documentaire Démission Pro-active.
+        </p>
+        <p>
+          Étant en production indépendante, il sera proposé dans différents festivals.
+        </p>
       </div>
     </div>
-    <div class="nav-next-down" (click)="nextSection()">
-      <span>Informations</span>
-
-      <img src="./assets/svgs/arrow-section-next.svg"/>
-    </div>
-  </div>
-  <div class="section" data-tooltip="Informations" id="component-info">
-    <div class="brand-main">
-      <img src="./assets/svgs/brand-white.svg">
-    </div>
-    <div class="nav-prev-up" (click)="prevSection()">
-      <img src="./assets/svgs/arrow-section-prev.svg"/>
-      <span>Avant-propos</span>
-    </div>
-    <div class="component-info-container">
-      <div class="component-info-container-content">
-        <div class="text-section-left">
-
-        </div>
-        <div class="text-section-right">
-
-        </div>
-      </div>
-
-    </div>
-    <div class="text-quoted"></div>
     <div class="nav-next-down" (click)="nextSection()">
       <span>Lieux</span>
-
       <img src="./assets/svgs/arrow-section-next.svg"/>
     </div>
   </div>
-  <div class="section" id="component-places" data-tooltip="Lieux">
-    <div class="brand-main">
-      <img src="./assets/svgs/brand-white.svg">
-    </div>
-    <div class="nav-prev-up" (click)="prevSection()">
-      <img src="./assets/svgs/arrow-section-prev.svg"/>
-      <span>Informations</span>
-    </div>
-    <div class="component-info-container">
-      <div class="component-info-container-content">
-
+  <div class="section" id="component-places">
+    <div class="slide" id="place-first">
+      <div class="component-container">
+        <div class="component-container-content">
+          <div class="nav-prev-up" (click)="prevSection()">
+            <img src="./assets/svgs/arrow-section-prev.svg"/>
+            <span>Avant-propos</span>
+          </div>
+          <div class="component-container-title">
+            <h1>BACH’ECHO</h1>
+          </div>
+          <div class="text-section">
+            <div class="text-section-left">
+              <p>
+                Parmi les acteurs du film, les filles du Bacha, se sont installées en Ardèche pour donner un autre sens à leur vie. Elles proposent à tout public des ateliers traitant de l’estime de soi, du bien-être avec les autres et de la diffusion de leurs actions socioculturelles. Leur projet s’inscrit dans la volonté de se mettre en mouvement individuellement et collectivement pour participer à la construction d’un monde plus vivable et plus équitable. Le respect, la solidarité et le partage sont trois valeurs majeures qui sous-tendent la réalisation de leurs objectifs. Leur volonté est de tendre vers un « mieux-vivre ».
+              </p>
+              <p>
+                En savoir plus : <a href="https://bach-echo.fr" target="_blank">https://bach-echo.fr</a>
+              </p>
+            </div>
+            <div class="text-section-right text-section-illustration-first">
+            </div>
+          </div>
+          <div class="nav-next-right" (click)="nextSlide()">
+            <span>MOULIN DE BRISÉ</span>
+            <img src="./assets/svgs/arrow-slide-next.svg"/>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="slide" id="place-first">
-
-    </div>
     <div class="slide" id="place-second">
+      <div class="component-container">
+        <div class="component-container-content">
+          <div class="nav-prev-up" (click)="prevSection()">
+            <img src="./assets/svgs/arrow-section-prev.svg"/>
+            <span>Avant-propos</span>
+          </div>
+          <div class="nav-prev-left" (click)="prevSlide()">
+            <img src="./assets/svgs/arrow-slide-prev.svg"/>
+            <span>BACH’ECHO</span>
+          </div>
+          <div class="component-container-title">
+            <h1>MOULIN DE BRISÉ</h1>
+          </div>
+          <div class="text-section">
+            <div class="text-section-left">
+              <p>
+                Situé à Monthiers dans l’Aisne, le Moulin de Brisé a été transformé au début du XXe siècle, en une menuiserie à énergie hydraulique, qui est toujours en état de marche. Le site est un éco-lieu avec des habitats participatifs, un lieu d’activités artisanales, agrobiologiques et artistiques, ainsi qu’un espace de formation, de transmission des savoirs et savoir-faire. Le film suit Pierre, Bénédicte et d’autres qui créent du lien à travers leurs activités et l’échange de cette idée d’autonomie, avec les membres de l’association. Leurs actions rayonnent dans les environs.
+              </p>
+              <p>
+                En savoir plus : <a href="https://www.moulindebrise.fr/" target="_blank">https://www.moulindebrise.fr/</a>
+              </p>
+            </div>
+            <div class="text-section-right text-section-illustration-second">
+            </div>
+          </div>
+          <div class="nav-next-right" (click)="nextSlide()">
+            <span>Lieu 3</span>
+            <img src="./assets/svgs/arrow-slide-next.svg"/>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="slide" id="place-third">
-
+      <div class="component-container">
+        <div class="component-container-content">
+          <div class="nav-prev-up" (click)="prevSection()">
+            <img src="./assets/svgs/arrow-section-prev.svg"/>
+            <span>Avant-propos</span>
+          </div>
+          <div class="nav-prev-left" (click)="prevSlide()">
+            <img src="./assets/svgs/arrow-slide-prev.svg"/>
+            <span>Lieu 2</span>
+          </div>
+          <div class="component-container-title">
+            <h1>Avant-Propos</h1>
+          </div>
+          <div class="text-section">
+            <div class="text-section-left">
+              <p>
+                « Il est aisé de se fondre dans le modèle socio-économique proposé, depuis plusieurs générations. Nous avons été formatés pour cela : croître et prospérer de plus en plus économiquement. Produire pour consommer davantage est devenu la règle. La compétition a remplacé l’entraide et l’individualisme s’oppose à l’échange. Au prix d’une vie passée à courir après les biens matériels, on en oublie presque d’exister.
+                <br/>
+                Surconsommation, suralimentation, bun-out, manipulations génétiques... De puissants lobbies resserrent l’étau pour définir un ordre mondial de la consommation. Sans compter l’accumulation de nos déchets qui nous oblige à inventer de nouveaux termes tels que : « mer de plastique » ou « sixième continent ». Il paraît évident que ces éléments font naître stress, peurs et autres angoisses.
+              </p>
+            </div>
+            <div class="text-section-right text-section-illustration-third">
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

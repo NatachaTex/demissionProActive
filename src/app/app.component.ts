@@ -19,7 +19,9 @@ export class AppComponent {
   fullpageApi: any;
   gestureHandler: any;
   public isEnded = false;
+  public isRunning = false;
   public isScrolling = false;
+  public isLandingPage = true;
 
   constructor() {
 
@@ -32,6 +34,7 @@ export class AppComponent {
       keyboardScrolling: false,
       controlArrows: false,
       allowScrolling: false,
+      loopHorizontal: false,
       afterResize: () => {
         console.log('After resize');
       },
@@ -44,22 +47,35 @@ export class AppComponent {
               videoBgElem.play();
               if (videoElem.paused && videoElem.played.length !== 0 && !this.isEnded) {
                 videoElem.play();
+                this.isRunning = !videoElem.paused;
               }
               break;
-            case 'info':
+            default:
               break;
           }
         }
         this.isScrolling = false;
       },
-      onLeave: () => {
+      onLeave: (origin, destination) => {
         this.isScrolling = true;
+        if(origin) {
+          if(destination.anchor === 'landing') {
+            this.isLandingPage = true;
+          } else {
+            setTimeout(() => {
+              this.isLandingPage = false;
+            }, 800);
+          }
+
+        }
       },
       afterSlideLoad: () => {
         this.isScrolling = false;
       },
       onSlideLeave: () => {
         this.isScrolling = true;
+
+
       }
     };
   }
@@ -76,6 +92,7 @@ export class AppComponent {
     } else {
       videoElem.pause();
     }
+    this.isRunning = !videoElem.paused;
   }
 
   handlePan = () => {
@@ -110,6 +127,14 @@ export class AppComponent {
     this.fullpageApi.moveSectionUp();
   }
 
+  nextSlide() {
+    this.fullpageApi.moveSlideRight();
+  }
+
+  prevSlide() {
+    this.fullpageApi.moveSlideLeft();
+  }
+
   transformLandingPage() {
     const videoElem: any = document.getElementById('trailer');
     videoElem.currentTime = 0;
@@ -138,21 +163,23 @@ export class AppComponent {
         } else {
           videoElem.pause();
         }
+        this.isRunning = !videoElem.paused;
         break;
     }
   }
 
   @HostListener('mousewheel', ['$event']) // for window scroll events
   onScroll(event) {
+    console.log(event.deltaX);
     if( !event.target.closest('.prevent-swipe') ) {
       if(event.deltaY >= 70 && this.isScrolling === false) {
-        this.fullpageApi.moveSectionDown();
+        this.nextSection();
       } else if(event.deltaY <= -70  && this.isScrolling === false) {
-        this.fullpageApi.moveSectionUp();
-      } else if(event.deltaX >= 70 && this.isScrolling === false) {
-        this.fullpageApi.moveSlideRight();
-      }  else if(event.deltaX <= -70 && this.isScrolling === false) {
-        this.fullpageApi.moveSlideLeft();
+        this.prevSection();
+      } else if(event.deltaX >= 100 && this.isScrolling === false) {
+        this.nextSlide()
+      }  else if(event.deltaX <= -100 && this.isScrolling === false) {
+        this.prevSlide()
       }
     }
   }

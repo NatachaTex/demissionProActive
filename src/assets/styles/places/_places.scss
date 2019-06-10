@@ -1,8 +1,22 @@
-@import "first";
-@import "second";
-@import "third";
+#place {
+  &-first {
+    background-image: url("./assets/images/first-place.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 
+  &-second {
+    background-image: url("./assets/images/second-place.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 
-#component-places {
-
+  &-third {
+    background-image: url("./assets/images/third-place.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 }
