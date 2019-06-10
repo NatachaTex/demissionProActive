@@ -1,6 +1,84 @@
 #fp-nav {
-  top: 50px;
+  top: 40px;
   z-index: 3;
+}
+
+.nav {
+  &-prev-up, &-next-down, &-prev-left, &-next-right {
+    z-index: 3;
+    position: absolute;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Barlow Condensed', sans-serif;
+
+    span {
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    &:hover {
+      transform: translateY(15px);
+      span {
+        opacity: 1;
+      }
+    }
+
+    img {
+      width: 50px;
+    }
+  }
+  &-next {
+    &-down {
+      bottom: 20px;
+      left: calc(50% - 100px);
+      width: 200px;
+
+      &:hover {
+        transform: translateY(15px);
+      }
+    }
+    &-right {
+      top: calc(50% - 50px);
+      right: -100px;
+      width: 100px;
+      height: 70px;
+      flex-direction: row;
+
+      &:hover {
+        transform: translateX(15px);
+      }
+    }
+  }
+
+  &-prev {
+    &-up {
+      top: -75px;
+      left: calc(50% - 100px);
+      width: 200px;
+
+      &:hover {
+        transform: translateY(-15px);
+      }
+    }
+
+    &-left {
+      top: calc(50% - 50px);
+      left: -100px;
+      width: 100px;
+      height: 70px;
+      flex-direction: row;
+
+      &:hover {
+        transform: translateX(-15px);
+      }
+    }
+  }
 }
 
 .fp-slidesNav {
@@ -10,70 +88,6 @@
   left: auto !important;
   z-index: 3;
 }
-
-
-.nav-next-down {
-  z-index: 3;
-  position: absolute;
-  bottom: 20px;
-  left: calc(50% - 100px);
-  width: 200px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  color: white;
-
-  span {
-    opacity: 0;
-    transition: all 0.3s ease;
-  }
-
-  &:hover {
-    transform: translateY(15px);
-    span {
-      opacity: 1;
-    }
-  }
-
-  img {
-    width: 50px;
-  }
-}
-
-.nav-prev-up {
-  z-index: 3;
-  position: absolute;
-  top: 20px;
-  left: calc(50% - 100px);
-  width: 200px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  color: white;
-
-  span {
-    opacity: 0;
-    transition: all 0.3s ease;
-  }
-
-  &:hover {
-    transform: translateY(-15px);
-    span {
-      opacity: 1;
-    }
-  }
-
-  img {
-    width: 50px;
-  }
-}
-
 
 .section, .slide {
   position: relative;
@@ -101,5 +115,26 @@
         z-index: -1;
       }
     }
+  }
+}
+
+
+.navbar {
+  width: 100%;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  z-index: 2;
+  transition: all 0.5s ease;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), transparent);
+
+  &.hide {
+    opacity: 0;
+  }
+
+  &.show {
+    opacity: 1;
   }
 }
