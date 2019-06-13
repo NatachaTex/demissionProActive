@@ -1,5 +1,5 @@
 <div class="navbar" ngClass="{{isLandingPage ? 'hide' : 'show'}}">
-  <img src="./assets/svgs/brand-white.svg" />
+  <img src="./assets/svgs/brand-white.svg" (click)="goToFirst()"/>
 </div>
 
 <div fullpage id="fullpage" [options]="config" (ref)="getRef($event)" (pan)="handlePan()">
@@ -109,7 +109,11 @@
                 En savoir plus : <a href="https://bach-echo.fr" target="_blank">https://bach-echo.fr</a>
               </p>
             </div>
-            <div class="text-section-right text-section-illustration-first">
+            <div class="text-section-right text-section-illustration-first with-map">
+              <img src="./assets/svgs/map-marker-alt-solid.svg" >
+              <iframe frameborder="0" style="border:0"
+                      class="google-maps"
+                      src="https://www.google.com/maps/embed/v1/place?q=07240%20Saint-Julien-le-Roux%2C%20France&key=AIzaSyCHmBtqnKnIO0UFp2NKGMz-dr1bfpHSsFQ" allowfullscreen></iframe>
             </div>
           </div>
           <div class="nav-next-right" (click)="nextSlide()">
@@ -142,11 +146,15 @@
                 En savoir plus : <a href="https://www.moulindebrise.fr/" target="_blank">https://www.moulindebrise.fr/</a>
               </p>
             </div>
-            <div class="text-section-right text-section-illustration-second">
+            <div class="text-section-right text-section-illustration-second with-map">
+              <img src="./assets/svgs/map-marker-alt-solid.svg" >
+              <iframe frameborder="0" style="border:0"
+                      class="google-maps"
+                      src="https://www.google.com/maps/embed/v1/place?q=place_id:EitMZSBNb3VsaW4gZGUgQnJpc2UsIDAyNDAwIE1vbnRoaWVycywgRnJhbmNlIi4qLAoUChIJM70Oujvs6EcRYgIhrpDSqtwSFAoSCfUBcEUu7OhHEXDfaYE-8QoE&key=AIzaSyCHmBtqnKnIO0UFp2NKGMz-dr1bfpHSsFQ" allowfullscreen></iframe>
             </div>
           </div>
           <div class="nav-next-right" (click)="nextSlide()">
-            <span>Lieu 3</span>
+            <span>Buxia Comestibles</span>
             <img src="./assets/svgs/arrow-slide-next.svg"/>
           </div>
         </div>
@@ -161,20 +169,24 @@
           </div>
           <div class="nav-prev-left" (click)="prevSlide()">
             <img src="./assets/svgs/arrow-slide-prev.svg"/>
-            <span>Lieu 2</span>
+            <span>BACH’ECHO</span>
           </div>
           <div class="component-container-title">
-            <h1>Avant-Propos</h1>
+            <h1>Buxia Comestibles</h1>
           </div>
           <div class="text-section">
             <div class="text-section-left">
               <p>
-                « Il est aisé de se fondre dans le modèle socio-économique proposé, depuis plusieurs générations. Nous avons été formatés pour cela : croître et prospérer de plus en plus économiquement. Produire pour consommer davantage est devenu la règle. La compétition a remplacé l’entraide et l’individualisme s’oppose à l’échange. Au prix d’une vie passée à courir après les biens matériels, on en oublie presque d’exister.
-                <br/>
-                Surconsommation, suralimentation, bun-out, manipulations génétiques... De puissants lobbies resserrent l’étau pour définir un ordre mondial de la consommation. Sans compter l’accumulation de nos déchets qui nous oblige à inventer de nouveaux termes tels que : « mer de plastique » ou « sixième continent ». Il paraît évident que ces éléments font naître stress, peurs et autres angoisses.
+                La dernière initiative présentée dans le film se situe à la Buisse, dans une commune de l’Isère. Florent et Daphnée ont créé l’association Buxia Comestibles, dans l’objectif de promouvoir la permaculture et l’autosuffisance alimentaire de la commune, tout en agissant durablement sur des terrains mis à disposition. Appuyés par la commune, ils se sont inspirés de Buxia énergies, une SAS proposant aux communes environnantes l’installations de centrales solaires à moindre coût.
+              </p>
+              <p>
+                En savoir plus : <a href="https://www.facebook.com/BuxiaComestibles/" target="_blank">https://www.facebook.com/BuxiaComestibles/</a>
               </p>
             </div>
-            <div class="text-section-right text-section-illustration-third">
+            <div class="text-section-right text-section-illustration-third with-map">
+              <img src="./assets/svgs/map-marker-alt-solid.svg" >
+              <iframe class="google-maps" frameborder="0" style="border:0"
+                      src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJDYuFcHHlikcRV3r41yAjbvQ&key=AIzaSyCHmBtqnKnIO0UFp2NKGMz-dr1bfpHSsFQ" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -183,4 +195,7 @@
   </div>
 </div>
 
+<div class="footer-custom" ngClass="{{isLastPage ? 'show' : 'hide'}}">
+  <p>Design : Natacha Texier | Développement : Lucas Bourgeois - Tous droits réservés &#174;</p>
+</div>
 <router-outlet></router-outlet>

@@ -22,6 +22,7 @@ export class AppComponent {
   public isRunning = false;
   public isScrolling = false;
   public isLandingPage = true;
+  public isLastPage = false;
 
   constructor() {
 
@@ -30,10 +31,9 @@ export class AppComponent {
       menu: '#menu',
       navigation: true,
       slidesNavigation: true,
-      touchSensitivity: '1',
+      touchSensitivity: 5,
       keyboardScrolling: false,
       controlArrows: false,
-      allowScrolling: false,
       loopHorizontal: false,
       afterResize: () => {
         console.log('After resize');
@@ -59,13 +59,19 @@ export class AppComponent {
       onLeave: (origin, destination) => {
         this.isScrolling = true;
         if(origin) {
-          if(destination.anchor === 'landing') {
+          if(destination.isFirst) {
             this.isLandingPage = true;
           } else {
             setTimeout(() => {
               this.isLandingPage = false;
+              if(destination.isLast) {
+                this.isLastPage = true;
+              } else {
+                this.isLastPage = false;
+              }
             }, 800);
           }
+
 
         }
       },
@@ -82,7 +88,7 @@ export class AppComponent {
 
   getRef(fullPageRef) {
     this.fullpageApi = fullPageRef;
-    this.fullpageApi.setAllowScrolling(false);
+    this.fullpageApi.setAllowScrolling(true, 'all');
   }
 
   handleVideoClick() {
@@ -93,6 +99,10 @@ export class AppComponent {
       videoElem.pause();
     }
     this.isRunning = !videoElem.paused;
+  }
+
+  goToFirst() {
+    this.fullpageApi.moveTo('landing');
   }
 
   handlePan = () => {
@@ -137,7 +147,10 @@ export class AppComponent {
 
   transformLandingPage() {
     const videoElem: any = document.getElementById('trailer');
+    const videoBgElem: any = document.getElementById('trailer-bg');
     videoElem.currentTime = 0;
+    videoElem.load();
+    videoBgElem.play();
     this.isEnded = true;
   }
 
@@ -165,22 +178,6 @@ export class AppComponent {
         }
         this.isRunning = !videoElem.paused;
         break;
-    }
-  }
-
-  @HostListener('mousewheel', ['$event']) // for window scroll events
-  onScroll(event) {
-    console.log(event.deltaX);
-    if( !event.target.closest('.prevent-swipe') ) {
-      if(event.deltaY >= 70 && this.isScrolling === false) {
-        this.nextSection();
-      } else if(event.deltaY <= -70  && this.isScrolling === false) {
-        this.prevSection();
-      } else if(event.deltaX >= 100 && this.isScrolling === false) {
-        this.nextSlide()
-      }  else if(event.deltaX <= -100 && this.isScrolling === false) {
-        this.prevSlide()
-      }
     }
   }
 }
