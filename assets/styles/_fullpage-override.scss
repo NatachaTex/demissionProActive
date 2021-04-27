@@ -137,6 +137,12 @@
   transition: all 0.5s ease;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), transparent);
   cursor: pointer;
+  
+  img {
+    max-width: 30%;
+    width: 100%;
+    min-width: 200px;
+  }
 
   &.hide {
     opacity: 0;
